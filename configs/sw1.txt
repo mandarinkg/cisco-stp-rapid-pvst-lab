@@ -1,0 +1,70 @@
+# 1. Switch-1. Настроим STP первом коммутаторе
+
+## Проверка наличие STP на коммутатора
+
+
+Заходим привилигированный режим 
+
+  enable
+
+команда проверки
+
+  sh spanning-tree vlan 1
+
+если получим - No spanning tree instance exists. Это не ошибка так будет если коммутатору не подключен ни один коммутатор. Короче говоря 
+все порты не активный. Чтобы увидеть результат добавте еще один коммутатор и соедините потом повторите команду. 
+
+## мы получим вот такие сообщение 
+
+Switch# sh spanning-tree 
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32769
+             Address     0001.C71A.7778
+             Cost        19
+             Port        1(FastEthernet0/1)
+             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0003.E4B3.57EC
+             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  20
+
+Interface        Role Sts Cost      Prio.Nbr Type
+---------------- ---- --- --------- -------- --------------------------------
+Fa0/1            Root FWD 19        128.1    P2p
+
+Switch#
+
+
+
+
+# Если нечего не вышло тогда создадим вручную STP
+
+## Заходим глобальной настройки
+
+Switch>enable
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#
+
+когда мы видим (config) это означает мы находимся глобальном конфигурации коммутатора. 
+
+
+## Создадим STP
+
+Switch(config)# spanning-tree vlan 1
+Switch(config)#
+Switch(config)# end
+
+Проверим
+
+Switch# sh spanning-tree vlan 1
+
+если вышло как вышеупомянутом тогда поздравляю вы вручную создали STP. 
+
+
+
+
+
+
