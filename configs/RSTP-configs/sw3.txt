@@ -1,1 +1,53 @@
+# RSTP настройка коммутатор 3
 
+Заходим глобавлной конфигурации
+
+enable
+conf t
+
+Дальше подключаем rapid-pvst
+
+spanning-tree mode rapid-pvst
+
+Выходим привилегированный режим 
+
+sh spanning-tree vlan 1
+
+и там появляется ~ Spanning tree enabled protocol rstp
+
+вот готова!
+
+
+
+
+
+
+# CISCO comand
+
+Switch#conf t
+
+
+Switch(config)#spanning-tree mode rapid-pvst 
+Switch(config)#end
+
+
+Switch#sh spanning-tree 
+VLAN0001
+  Spanning tree enabled protocol rstp
+  Root ID    Priority    4097
+             Address     0090.0C08.E54B
+             Cost        4
+             Port        25(GigabitEthernet0/1)
+             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0060.3E28.9D0E
+             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  20
+
+Interface        Role Sts Cost      Prio.Nbr Type
+---------------- ---- --- --------- -------- --------------------------------
+Fa0/1            Desg FWD 19        128.1    P2p
+Gi0/1            Root FWD 4         128.25   P2p
+
+Switch#
