@@ -1,0 +1,38 @@
+# Switch-3. Настроим STP
+
+## Настроим также третьем коммутатора
+
+
+
+Switch>
+Switch>
+Switch>en
+Switch#
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#
+Switch(config)#spanning-tree vlan 1
+Switch(config)#
+Switch(config)#end
+Switch#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Switch#sh spanning-tree vlan 1
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32769
+             Address     0003.E4B3.57EC
+             This bridge is the root
+             Port        1(FastEthernet0/1)
+             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0003.E4B3.57EC
+             Hello Time  2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  20
+
+Interface        Role Sts Cost      Prio.Nbr Type
+---------------- ---- --- --------- -------- --------------------------------
+Fa0/1            Root FWD 19        128.1    P2p
+
+Switch#
